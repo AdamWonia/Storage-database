@@ -7,10 +7,6 @@ from getpass import getpass
 # bo mogą być dwa takie same telegfony
 # i ktory wtedy usunie? hmm
 
-# nazyw kolumn dynamicznie w 'show content':
-# show columns from phones;
-
-
 class MyDataBase:
     def __init__(self):
         self.db = self.connect_db()
@@ -38,12 +34,14 @@ class MyDataBase:
 
     def show_all_records(self):
         # Show all record in table:
-        print("Store content: (Brand, Model, Color, ID)")
         my_cursor = self.db.cursor()
         try:
-            my_cursor.execute()
-            
-
+            my_cursor.execute("SHOW COLUMNS FROM phones")
+            results = my_cursor.fetchall()
+            print("Store content: (", end='')
+            for i in range(0, len(results)):
+                print(results[i][0], end=', ')
+            print(")")
             my_cursor.execute("SELECT * FROM phones")
             results = my_cursor.fetchall()
             if len(results) > 0:

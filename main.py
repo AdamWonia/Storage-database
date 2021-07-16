@@ -20,7 +20,7 @@ projekt 2 zakres:
 -- możliwość wyszukiwania produktów po ich nazwe lub id lub za pomocą frazy +++
 -- możliwość usuwania danego produktu z bazy: +++
 ---> obsługa wyjątków ++++
----> zatwierdzenie przez użytkownika usuwania produktu
+---> zatwierdzenie przez użytkownika usuwania produktu +++
 -- możliwość aktualizacji danych produktu lub zmiany wybranego pola +++
 ---> ew. edycja całego rekordu +++
 
