@@ -133,43 +133,29 @@ class MyDataBase:
         finally:
             my_cursor.close()
 
-    def find_record_id(self, brand, model, color):
-        # Find and return product ID:
-        my_cursor = self.db.cursor()
-        phone_id = None
-        try:
-            my_cursor.execute(f"SELECT id FROM phones WHERE brand = '{brand}' "
-                              f"AND model = '{model}' AND color = '{color}';")
-            phone_id = my_cursor.fetchone()
-        except Exception as e:
-            print("Something went wrong!")
-            print(e)
-        finally:
-            my_cursor.close()
-
-        return phone_id[0]
-
     def delete_record(self):
         # Delete product from database:
-        print("Insert phone model and brand to delete:")
-        while True:
-            brand = input("Insert brand: ").lower().strip()
-            model = input("Insert model: ").lower().strip()
-            color = input("Insert color: ").lower().strip()
-            if (brand.isspace() or brand == '') or (model.isspace() or model == '') \
-                    or (color.isspace() or color == ''):
-                print("You put invalid data, please try again")
-            else:
-                break
+        given_id = fcn.input_int("Insert product ID: ")
         my_cursor = self.db.cursor()
         try:
-            phone_id = self.find_record_id(brand, model, color)
-            if phone_id is not None:
-                my_cursor.execute(f"DELETE FROM phones WHERE id = '{phone_id}';")
-                self.db.commit()
-                print(f"Phone {model}, {brand}, {color} has been deleted!")
+            my_cursor.execute(f"SELECT * FROM phones WHERE id = '{given_id}'")
+            results = my_cursor.fetchall()
+            if len(results) == 0:
+                print("There is not product with this ID")
             else:
-                pass
+                print(f"Product with ID = {given_id}: ")
+                for row in results:
+                    for element in row:
+                        print(element, end=', ')
+                    print("")
+                print("Are you sure you want to delete the product? [Y or N]: ")
+                option = fcn.input_str('Y', 'N')
+                if option == 'Y':
+                    my_cursor.execute(f"DELETE FROM phones WHERE id = '{given_id}';")
+                    self.db.commit()
+                    print("Phone has been deleted!")
+                else:
+                    print("Nothing has been deleted")
         except Exception as e:
             print("Something went wrong!")
             print(e)
@@ -205,6 +191,22 @@ class MyDataBase:
                 print(e)
 
         my_cursor.close()
+
+    def find_record_id(self, brand, model, color):
+        # Find and return product ID:
+        my_cursor = self.db.cursor()
+        phone_id = None
+        try:
+            my_cursor.execute(f"SELECT id FROM phones WHERE brand = '{brand}' "
+                              f"AND model = '{model}' AND color = '{color}';")
+            phone_id = my_cursor.fetchone()
+        except Exception as e:
+            print("Something went wrong!")
+            print(e)
+        finally:
+            my_cursor.close()
+
+        return phone_id[0]
 
     def close_connection(self):
         self.db.close()
