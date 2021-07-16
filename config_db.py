@@ -41,6 +41,9 @@ class MyDataBase:
         print("Store content: (Brand, Model, Color, ID)")
         my_cursor = self.db.cursor()
         try:
+            my_cursor.execute()
+            
+
             my_cursor.execute("SELECT * FROM phones")
             results = my_cursor.fetchall()
             if len(results) > 0:
