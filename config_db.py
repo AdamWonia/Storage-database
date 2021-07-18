@@ -23,7 +23,7 @@ class MyDataBase:
                 host="localhost",
                 user=input("Enter username: "),
                 password=getpass("Enter password: "),
-                database="testdatabase"
+                database="your-database-name"
             )
             print("Connected to the database")
         except Exception as e:
