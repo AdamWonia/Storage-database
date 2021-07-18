@@ -23,6 +23,5 @@ After selecting the table, a list of operations that can be performed is display
 - deleting an existing product,
 - editing an existing product.
 
-The program is a good base for further development, by adding more capabilities such as: 
-adding new products to the database, adding new options related to the operation of the database (e.g. counter 
-products in the database).
+The program is a good base for further development, by adding more capabilities such as: adding new products to the database, 
+adding new options related to the operation of the database (e.g. product counter in the database).
