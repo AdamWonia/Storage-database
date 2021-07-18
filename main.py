@@ -3,7 +3,7 @@ import functions as fcn
 
 
 def main():
-    # Creating instance of class:
+    # Create instance of class:
     my_db = MyDataBase()
 
     # Create table 'phones' if not exists:
@@ -43,7 +43,7 @@ def main():
     if start_option == 6:
         my_db.edit_record()
 
-    # Closing connection with DB:
+    # Close connection with DB:
     my_db.close_connection()
 
 
