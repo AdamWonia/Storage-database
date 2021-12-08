@@ -1,35 +1,25 @@
-import mysql.connector
 from config_db import *
 import functions as fcn
-
-"""
-projekt 2 zakres:
-- aplikacja CLI - obługa z terminala - pierwsza wersja
-- aplikcja z GUI - obsługa z menu - druga wersja (rozszerzenie pierwszej)
-
-- scope: aplikacja do obsługi magazynu:
--- możliwość sprawdzenia stanu całego magazynu lub wybranych produktów +++
-
-
--- możliwość dodawania nowych produktów (np 3 typy: telefon, zegarek, laptop)
----> każdy produkt posiada inne pola w tabeli +++
----> pokazywać jakie są kolumny w tabeli +++
----> obługa wyjątków jak pole puste lub domyślnie wypełniaj +++
----> użytkownik wybiera który produkt chce dodać do magazynu
----> w zależności od produktu mają być odpowiednie pola do uzupełnienia
--- możliwość wyszukiwania produktów po ich nazwe lub id lub za pomocą frazy +++
--- możliwość usuwania danego produktu z bazy: +++
----> obsługa wyjątków ++++
----> zatwierdzenie przez użytkownika usuwania produktu +++
--- możliwość aktualizacji danych produktu lub zmiany wybranego pola +++
----> ew. edycja całego rekordu +++
-
-"""
 
 
 def main():
     # Creating instance of class:
     my_db = MyDataBase()
+
+    # Create table 'phones' if not exists:
+    my_db.create_table_phones()
+
+    # Create table 'watches' if not exists:
+    my_db.create_table_watches()
+
+    print("Select table you want to choose: ")
+    print("1 - phones")
+    print("2 - watches")
+    db_option = fcn.select_option(1, 2)
+    if db_option == 1:
+        my_db.get_table_name("phones")
+    elif db_option == 2:
+        my_db.get_table_name("watches")
 
     print("What do you want to do? Select proper option: ")
     print("1 - show store content")
