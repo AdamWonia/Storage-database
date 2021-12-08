@@ -1,35 +1,34 @@
 from config_db import *
-import control_input as fcn
+from control_input import *
 
-
-def main():
+if __name__ == '__main__':
     # Create instance of class:
     my_db = MyDataBase()
-
-    # Create table 'phones' if not exists:
+    # Connect to database
+    my_db.connect_db()
+    # Create table 'phones' and watches if they do not exists:
     my_db.create_table_phones()
-
-    # Create table 'watches' if not exists:
     my_db.create_table_watches()
 
-    print("Select table you want to choose: ")
-    print("1 - phones")
-    print("2 - watches")
-    db_option = fcn.select_option(1, 2)
+    # Select table you want to use:
+    print("Select the table you want to use: ")
+    print("1 - phones table")
+    print("2 - watches table")
+    db_option = select_option(1, 2)
     if db_option == 1:
-        my_db.get_table_name("phones")
+        my_db.set_table_name("phones")
     elif db_option == 2:
-        my_db.get_table_name("watches")
+        my_db.set_table_name("watches")
 
-    print("What do you want to do? Select proper option: ")
-    print("1 - show store content")
-    print("2 - find product in a store")
-    print("3 - find product by key word")
+    print("\nWhat do you want to do? Choose the right option: ")
+    print("1 - view storage content")
+    print("2 - find a product in storage")
+    print("3 - find a product by key word")
     print("4 - add new product")
-    print("5 - delete product from database")
-    print("6 - edit product information")
+    print("5 - remove the product from the database")
+    print("6 - edit product information", end='\n\n')
 
-    start_option = fcn.select_option(1, 6)
+    start_option = select_option(1, 6)
     if start_option == 1:
         my_db.show_all_records()
     if start_option == 2:
@@ -45,8 +44,3 @@ def main():
 
     # Close connection with DB:
     my_db.close_connection()
-
-
-if __name__ == '__main__':
-    main()
-
