@@ -37,4 +37,3 @@ def input_str(option1=None, option2=None):
                 print("You put invalid data, please try again")
 
     return input_data
->>>>>>> bdb13ef0b0d3e6b365a3e5e8c92be3189d928514

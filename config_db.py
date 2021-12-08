@@ -338,4 +338,3 @@ class MyDataBase:
 
     def close_connection(self):
         self.db.close()
->>>>>>> bdb13ef0b0d3e6b365a3e5e8c92be3189d928514
