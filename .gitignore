@@ -1,5 +1,6 @@
 .idea/
 __pycache__/
 venv/
-*.txt
+pasy.txt
+readme.txt
 database_test.py
