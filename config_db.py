@@ -1,5 +1,5 @@
 import mysql.connector
-import functions as fcn
+import control_input as fcn
 from getpass import getpass
 
 

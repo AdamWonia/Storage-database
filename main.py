@@ -1,5 +1,5 @@
 from config_db import *
-import functions as fcn
+import control_input as fcn
 
 
 def main():
