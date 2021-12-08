@@ -1,7 +1,13 @@
 def select_option(lb, ub):
+    """Returns the selected integer type option between lb and ub. Otherwise shows an error message.
+
+            Parameters:
+                lb (lower bound): Lower limit of the integer type for options.
+                ub (upper bound): Upper limit of the integer type for options.
+    """
     while True:
         option = input("Insert option: ")
-        if option.isnumeric() and int(option) in range(lb, ub + 1):
+        if option.isnumeric() and (int(option) in range(lb, ub + 1)):
             break
         else:
             print("You put invalid option, insert number between {} and {}".format(lb, ub))
@@ -9,10 +15,11 @@ def select_option(lb, ub):
     return int(option)
 
 
-def input_int(msg=None):
+def input_int():
+    """Returns given integer number, otherwise displays an error message."""
     while True:
         try:
-            input_data = int(input(msg))
+            input_data = int(input())
             break
         except:
             print("You put invalid data, please enter an integer")
@@ -21,6 +28,14 @@ def input_int(msg=None):
 
 
 def input_str(option1=None, option2=None):
+    """Returns a string variable taken from the user, otherwise displays an error message.
+    If option1 and option2 are specified, the function returns one of those two options,
+    otherwise it displays an error message.
+
+            Parameters:
+                option1: First option to choose of type string.
+                option2: Second option to choose of type string.
+    """
     while True:
         input_data = input()
         if option1 is None and option2 is None:
