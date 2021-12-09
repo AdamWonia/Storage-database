@@ -1,27 +1,104 @@
-# Storage-database
+# Storage database with Python and MySQL
 
-The program is used to service a store that initially contains two products: phones and watches.
+## Description
+
+The programme is used to manage a storage which initially contains two products: 
+* phones
+* watches
+
 Each product is stored in a separate table with corresponding columns.
 
-The main.py file is the main file that should be run.
-The config_db.py file contains the MyDataBase class containing all the methods needed to handle the program and the database.
-File functions.py contains additional functions used in the program.
+To create a tables in the database, the **create_table_phones()** and **create_table_watches()** methods available in the MyDataBase class object are used. 
 
-There are functions available in the program to connect to the database, and to create two tables:
-- phones: brand varchar(50), model varchar(50), color varchar(50), id int AI PK.
-- watches: brand varchar(50), type varchar(50), color varchar(50), material varchar(50), id int AI PK.
+The following queries were used to create them:
 
-It is recommended to run the program from the cmd console.
-At the beginning, the user is asked to enter the user name and password to the database. 
-Then he has the opportunity to select the table on which he wants to work.
+* to create phones table:
 
-After selecting the table, a list of operations that can be performed is displayed. These are:
-- checking the stock content,
-- finding a specific product in the database,
-- finding a product in the database by keyword,
-- adding a new product to the database,
-- deleting an existing product,
-- editing an existing product.
+```query
+CREATE TABLE IF NOT EXISTS phones (brand  VARCHAR(50), model VARCHAR(50), color VARCHAR(50), 
+id int PRIMARY KEY AUTO_INCREMENT);
+```
 
-The program is a good base for further development, by adding more capabilities such as: adding new products to the database, 
-adding new options related to the operation of the database (e.g. product counter in the database).
+* to create watches table:
+
+```query
+CREATE TABLE IF NOT EXISTS watches (brand  VARCHAR(50), type VARCHAR(50), color VARCHAR(50), 
+material VARCHAR(50), id int PRIMARY KEY AUTO_INCREMENT);
+```
+
+## Creating a virtual environment
+
+Open a terminal in your project directory and type the following command:
+
+```bash
+python -m venv venv
+```
+This will create a virtual environment named **venv**. To activate the virtual environment type the following command in your terminal:
+
+```bash
+"venv/scripts/activate.bat"
+```
+
+Next you have to install all required packages.
+
+
+## Packages
+
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install all required packages, which are listed in the **requirements.txt** file. You can use the command below.
+
+```bash
+pip install -r requirements.txt
+```
+
+## Launch
+
+To run the application, use the **main.py** file found in the repository. You can use a terminal by typing the following command or run it from the IDE.
+
+```bash
+python main.py
+```
+
+When you start the program you will see the menu shown below:
+
+```terminal
+Connected to the database
+Select the table you want to use:
+1 - phones table
+2 - watches table
+Insert option:
+
+Insert option: 
+```
+You need to select a product now. After selecting one of the options, a menu will be displayed for further operation of the programme.
+
+```terminal
+What do you want to do? Choose the right option:
+1 - view storage content
+2 - find a product in storage
+3 - find a product by keyword
+4 - add new product
+5 - remove the product from the database
+6 - edit product information
+
+Insert option: 
+```
+Now select one of the available options. As you can see, it is possible to view the contents of the database, add a new product, search for existing products, change information and delete a product from the database.
+
+## Closing words
+
+The **MyDataBase.py** module contains the MyDataBase class, which contains methods to initialise the database connection and product management. In the **connect_db()** method, enter the appropriate database-related data to ensure a valid database connection.
+
+```python
+self.db = mysql.connector.connect(
+    host="localhost",
+    user="username",
+    password="your-password",
+    database="database-name"
+)
+```
+
+The **control_input.py** module contains a functions to retrieve the relevant data from the terminal.
+
+The program is a good base for further development, by adding more capabilities such as: adding new products to the database, adding new options related to the operation of the database (e.g. product counter in the database).
+
+I hope you enjoy using it.
