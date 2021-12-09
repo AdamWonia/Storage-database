@@ -1,4 +1,4 @@
-from config_db import *
+from MyDataBase import *
 from control_input import *
 
 if __name__ == '__main__':
@@ -23,7 +23,7 @@ if __name__ == '__main__':
     print("\nWhat do you want to do? Choose the right option: ")
     print("1 - view storage content")
     print("2 - find a product in storage")
-    print("3 - find a product by key word")
+    print("3 - find a product by keyword")
     print("4 - add new product")
     print("5 - remove the product from the database")
     print("6 - edit product information", end='\n\n')
@@ -32,9 +32,9 @@ if __name__ == '__main__':
     if start_option == 1:
         my_db.show_all_records()
     if start_option == 2:
-        my_db.show_record()
+        my_db.show_single_record()
     if start_option == 3:
-        my_db.find_by_word()
+        my_db.find_by_keyword()
     if start_option == 4:
         my_db.add_new_product()
     if start_option == 5:
